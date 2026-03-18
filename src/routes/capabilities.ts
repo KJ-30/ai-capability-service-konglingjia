@@ -1,14 +1,14 @@
 import { Router, Request, Response, NextFunction } from 'express';
 import { CapabilityRequest, SuccessResponse, ResponseMeta } from '../types';
 import { AppError } from '../middleware/errorHandler';
-import { TextSummaryOpenAIHandler } from '../capabilities/textSummaryOpenAI';
+import { TextSummaryDeepSeekHandler } from '../capabilities/textSummaryDeepSeek';
 import { v4 as uuidv4 } from 'uuid';
 
 const router = Router();
 
 // 注册所有 capability 处理器
 const handlers = {
-  text_summary: new TextSummaryOpenAIHandler(),
+  text_summary: new TextSummaryDeepSeekHandler(),
 };
 
 router.post('/run', async (req: Request, res: Response, next: NextFunction) => {
